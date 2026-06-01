@@ -7,6 +7,7 @@ TODAY=$(date +%Y%m%d)
 SAVE_PATH="$SAVE_DIR/$DATE.jpg"
 LOG="$HOME/.daily-wallpaper/wallpaper.log"
 LAST_SET="$HOME/.daily-wallpaper/.last_set"
+SLACK_WEBHOOK="$(cat "$HOME/.daily-wallpaper/.slack_webhook" 2>/dev/null)"
 
 mkdir -p "$SAVE_DIR"
 
@@ -52,6 +53,9 @@ for i in 1 2 3; do
     if [ $? -eq 0 ]; then
         echo "$DATE" > "$LAST_SET"
         log "SUCCESS: Wallpaper set to $SAVE_PATH"
+        curl -sf -X POST -H 'Content-type: application/json' \
+            --data "{\"text\":\"배경화면 바뀌었어요 🖼 ($DATE) - $(date '+%H:%M')\"}" \
+            "$SLACK_WEBHOOK" > /dev/null
         exit 0
     fi
     log "Attempt $i failed, retrying in 10s..."
