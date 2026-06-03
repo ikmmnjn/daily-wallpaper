@@ -1,4 +1,4 @@
-*.log
+.slack_webhook
+.last_set
 images/
-.DS_Store
-.claude/
+*.log
