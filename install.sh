@@ -7,6 +7,17 @@ LAUNCH_AGENTS="$HOME/Library/LaunchAgents"
 
 echo "🖼️  Daily Wallpaper 설치 시작..."
 
+# desktoppr 설치 확인 (macOS 26+ 필요)
+if ! command -v desktoppr &>/dev/null; then
+    echo "⚠️  desktoppr가 없습니다. Homebrew로 설치합니다..."
+    if ! command -v brew &>/dev/null && [ -x /opt/homebrew/bin/brew ]; then
+        export PATH="/opt/homebrew/bin:$PATH"
+    fi
+    brew install desktoppr || { echo "❌ desktoppr 설치 실패. 먼저 Homebrew를 설치해주세요."; exit 1; }
+fi
+DESKTOPPR=$(command -v desktoppr)
+echo "✅ desktoppr: $DESKTOPPR"
+
 # 디렉토리 생성
 mkdir -p "$INSTALL_DIR/images"
 mkdir -p "$LAUNCH_AGENTS"
@@ -55,7 +66,7 @@ if [ ! -f "$SAVE_PATH" ]; then
 fi
 
 for i in 1 2 3; do
-    osascript -e "tell application \"System Events\" to tell every desktop to set picture to \"$SAVE_PATH\"" 2>/dev/null
+    /usr/local/bin/desktoppr "$SAVE_PATH" 2>/dev/null
     if [ $? -eq 0 ]; then
         echo "$DATE" > "$LAST_SET"
         log "SUCCESS: Wallpaper set to $SAVE_PATH"
