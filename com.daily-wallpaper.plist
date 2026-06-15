@@ -7,46 +7,18 @@
     <key>ProgramArguments</key>
     <array>
         <string>/bin/bash</string>
-        <string>/Users/kimminjin/.daily-wallpaper/wallpaper.sh</string>
+        <string>/Users/home/.daily-wallpaper/wallpaper.sh</string>
     </array>
     <key>StartCalendarInterval</key>
-    <array>
-        <dict>
-            <key>Hour</key>
-            <integer>16</integer>
-            <key>Minute</key>
-            <integer>5</integer>
-        </dict>
-        <dict>
-            <key>Hour</key>
-            <integer>17</integer>
-            <key>Minute</key>
-            <integer>5</integer>
-        </dict>
-        <dict>
-            <key>Hour</key>
-            <integer>18</integer>
-            <key>Minute</key>
-            <integer>5</integer>
-        </dict>
-        <dict>
-            <key>Hour</key>
-            <integer>19</integer>
-            <key>Minute</key>
-            <integer>5</integer>
-        </dict>
-        <dict>
-            <key>Hour</key>
-            <integer>20</integer>
-            <key>Minute</key>
-            <integer>5</integer>
-        </dict>
-    </array>
+    <dict>
+        <key>Hour</key><integer>16</integer>
+        <key>Minute</key><integer>0</integer>
+    </dict>
     <key>RunAtLoad</key>
     <false/>
     <key>StandardOutPath</key>
-    <string>/Users/kimminjin/.daily-wallpaper/launchd.log</string>
+    <string>/Users/home/.daily-wallpaper/launchd.log</string>
     <key>StandardErrorPath</key>
-    <string>/Users/kimminjin/.daily-wallpaper/launchd.log</string>
+    <string>/Users/home/.daily-wallpaper/launchd.log</string>
 </dict>
 </plist>
